@@ -1,13 +1,11 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
+from flask import Flask
 
 app = Flask(__name__)
-CORS(app)
 
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({"message": "Hello from Flask on Vercel!"})
+    return "Flask is working on Vercel!"
 
 # Vercel entry point
 def handler(environ, start_response):
-    return app(environ, start_response)
+    return app.wsgi_app(environ, start_response)
