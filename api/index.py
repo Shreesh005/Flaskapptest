@@ -6,6 +6,5 @@ app = Flask(__name__)
 def home():
     return "Flask is working on Vercel!"
 
-# Vercel entry point
-def handler(environ, start_response):
-    return app.wsgi_app(environ, start_response)
+# 🔧 Export WSGI-compatible handler for Vercel
+handler = app.wsgi_app
